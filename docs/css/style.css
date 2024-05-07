@@ -1,0 +1,68 @@
+@charset "utf-8";
+
+body {
+    font-family: sans-serif, Arial, Helvetica;
+    color:#3d2525;
+    text-align: center;
+    margin: 20px;
+}
+
+.background {
+    background-color: #ed9494;
+}
+
+h1 {
+    color: #F3ECC4;
+    -webkit-text-stroke: 3px #98311f;
+    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+    font-weight: 100;
+    font-size: 70px;
+}
+
+h2 {
+    color: #F3ECC4;
+    -webkit-text-stroke: 2px #98311f;
+    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+    font-weight: 30;
+    font-size: 50px;
+    text-decoration: underline;
+}
+
+a {
+    color: #3d2525;
+}
+a:hover {
+    color: #A35A5A;
+}
+a:active {
+    color: black;
+}
+
+p {
+    text-align: center;
+}
+
+button {
+    background-color: #E56367;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #2a293a;
+    padding: 10px 25px;
+    font-weight: 600;
+    font-size: 24px;
+    color: #F3ECC4;
+    position: relative;
+    margin: 5px;
+    min-width: 300px;
+}
+
+button:hover {
+    border-color: #F3ECC4;
+    border-width: 2px;
+    top:0px;
+}
+
+button:active {
+    background-color: #F35050;
+}
+

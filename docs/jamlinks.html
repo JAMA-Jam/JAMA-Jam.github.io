@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="FawnGuardian">
+    <title>JAMA Jam Jamlinks</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jamlinks.js"></script>
+    <script defer>
+        window.onload = () => {
+            const currentBtn = document.getElementById("current");
+            if (currentBtn) {
+                // Updates Jama Jma number on the button
+                currentBtn.innerHTML = `JAMA JAM ${GetJamaJamDate(0, false)}`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="current" onclick="OpenJamLink()">CURRENT JAMA JAM</button>
+    <button id="next" onclick="OpenJamLink(1)">NEXT JAM</button>
+</body>
+</html>
