@@ -33,28 +33,59 @@ function ProcessData(allText) {
 }
 
 // Column IDs for html&css
-const colID = ["jam","award","name","asset","theme"];
+const colID = ["anniversary","jam","award","name","asset","theme"];
 
 function LoadDataToTable(data) {
-    let table1 = $("tbody")[0];    
-    let table2 = $("tbody")[1];
-    let table3 = $("tbody")[2];
+    let table1 = $("tbody")[0]; //anniversary
+    let table2 = $("tbody")[1]; //Best in show    
+    let table3 = $("tbody")[2]; //Best use of theme
+    let table4 = $("tbody")[3]; //Most Creative
     var thisTable = 1;
+    var anniversary = false;
+    var award = false;
     for(var i = 0; i < data.length; i++){
         // Create new row
         let tr = document.createElement("tr");
         // Create a new td for each cell
-        for(var col = 0; col < data[i].length; col++){
+        for(var col = 0; col < data[i].length; col++)
+        {
             let splitU = data[i][col].split('&&&');
             
             //organizes by award and 
             if(splitU[0] === "Best In Show")
-                thisTable = 1;
+            {
+                if(anniversary)
+                     thisTable = 1;
+                else
+                    thisTable = 2;
+                award = true;
+            }
             else if(splitU[0] === "Best Use of Theme")
-                thisTable = 2;
+            {
+                if(anniversary)
+                     thisTable = 1;
+                else
+                    thisTable = 3;
+                award = true;
+            }
             else if(splitU[0] === "Most Creative")
-                thisTable = 3;
-            else{
+            {
+                if(anniversary)
+                     thisTable = 1;
+                else
+                    thisTable = 4;
+                award = true;
+            }
+            else if(splitU[0] === "-")
+            {
+                anniversary = false;
+            }
+            else if(splitU[0] === "+")
+            {
+                anniversary = true;
+            }
+            else
+            {
                 // let displayText = "";
                 let td = document.createElement("td");
                 td.id = colID[col];
@@ -81,12 +112,26 @@ function LoadDataToTable(data) {
                     }
                 }
             }
+            
+           if(anniversary && award)
+            {
+                let td = document.createElement("td");
+                td.id = colID[col];
+                tr.append(td);
+                td.prepend(splitU);
+            }
+            
+            
+            if(thisTable === 1)
+                table1.append(tr);
+            else if(thisTable === 2)
+                table2.append(tr);
+            else if(thisTable === 3)
+                table3.append(tr);
+            else if(thisTable === 4)
+                table4.append(tr);
+            
+            award = false;
         }
-        if(thisTable === 1)
-            table1.append(tr);
-        else if(thisTable === 2)
-            table2.append(tr);
-        else
-            table3.append(tr);
     }
 }
